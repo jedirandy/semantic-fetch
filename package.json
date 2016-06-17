@@ -2,8 +2,15 @@
   "name": "semantic-fetch",
   "version": "0.1.0",
   "description": "semantics redefined for the Fetch API",
+  "keywords": [
+    "fetch",
+    "http",
+    "http-client",
+    "client"
+  ],
   "main": "dist/index.js",
   "scripts": {
+    "build": "webpack",
     "test": "karma start --single-run"
   },
   "author": "Sheng <jedirandy@gmail.com>",
@@ -23,5 +30,9 @@
     "karma-webpack": "^1.7.0",
     "sinon": "^1.17.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedirandy/semantic-fetch.git"
+  }
 }

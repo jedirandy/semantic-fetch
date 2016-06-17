@@ -1,11 +1,20 @@
 # Semantic Fetch
-:tophat: A Fetch API enhancer with redefined semantics
+:tophat: A HTTP library with redefined semantics based on Fetch
+
+[![Build Status](https://travis-ci.org/jedirandy/semantic-fetch.svg?branch=master)](https://travis-ci.org/jedirandy/semantic-fetch)
+[![dependencies](https://david-dm.org/jedirandy/semantic-fetch.svg)](https://david-dm.org/jedirandy/semantic-fetch)
+[![npm module](https://badge.fury.io/js/semantic-fetch.svg)](https://www.npmjs.org/package/semantic-fetch)
 
 The Fetch API is awesome, but it might need some tweaks when it comes to error handling and body resolving, this library provides an alternative fetcher with the following semantics:
 
 1. success means a response with status < 400
 2. failure results from a response with status >= 400, or a network error (status defined as 0)
 3. response comes with a body already resolved
+
+## Install
+```
+npm install --save semantic-fetch
+```
 
 ## Getting started
 ```javascript
