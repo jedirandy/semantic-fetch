@@ -21,7 +21,7 @@ fetcher('/api', { method: 'GET' })
         console.log(`${res.status} ${res.body}`)
     })
     .catch(res => {
-        if (res.status = 0)
+        if (res.status === 0)
             console.log('network error')
         else
             console.log(`failed due to ${res.body}`)
@@ -46,7 +46,7 @@ this fetch creator takes 2 arguments:
    a default bodyResolver is provided in case absence
 
 #### Returns
-the enhanced fetch function
+the enhanced fetch function that takes the same arguments as `fetch`
 
 ## License
 MIT
