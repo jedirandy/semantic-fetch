@@ -1,0 +1,27 @@
+{
+  "name": "semantic-fetch",
+  "version": "0.1.0",
+  "description": "semantics redefined for the Fetch API",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "karma start --single-run"
+  },
+  "author": "Sheng <jedirandy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.6.0",
+    "isomorphic-fetch": "^2.2.1",
+    "istanbul-instrumenter-loader": "^0.2.0",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.0.0",
+    "karma-mocha": "^1.0.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sinon": "^1.0.5",
+    "karma-webpack": "^1.7.0",
+    "sinon": "^1.17.4"
+  },
+  "dependencies": {}
+}
