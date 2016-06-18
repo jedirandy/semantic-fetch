@@ -14,11 +14,11 @@ export const createFetch = (fetch, bodyResolver = defaultBodyResolver) => (url, 
         () => Promise.reject(Response.error())
     )
     .then(([body, res]) => {
-        let response = ({
+        let response = {
             body,
             _res: res,
             status: res.status
-        })
+        }
         if (res.status < 400)
             return Promise.resolve(response)
         else

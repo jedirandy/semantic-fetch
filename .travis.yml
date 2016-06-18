@@ -5,6 +5,7 @@ node_js:
   - "6"
 before_script:
   - npm install
+  - npm install codecov
 script:
   - npm run test
   - npm run build
