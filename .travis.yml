@@ -8,3 +8,5 @@ before_script:
 script:
   - npm run test
   - npm run build
+after_script:
+  - cat coverage/*/lcov.info | ./node_modules/codecov/bin/codecov

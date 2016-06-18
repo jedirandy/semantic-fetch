@@ -1,0 +1,11 @@
+{
+    "env": {
+        "test": {
+            "plugins": [
+                ["__coverage__", {
+                    "ignore": ["*.spec.js", "node_modules/*"]
+                }]
+            ]
+        }
+    }
+}

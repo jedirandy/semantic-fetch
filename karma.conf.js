@@ -1,3 +1,4 @@
+process.env.BABEL_ENV = 'test'
 module.exports = function(config) {
     config.set({
         browsers: ['PhantomJS'],
@@ -5,7 +6,7 @@ module.exports = function(config) {
         frameworks: ['mocha', 'chai', 'sinon'],
         files: [
             'node_modules/babel-polyfill/browser.js',
-            'test/**/*.js'
+            {pattern: 'test/**/*.js', watched: false,included: true}
         ],
         preprocessors: {
             'test/**/*.js': ['webpack']
@@ -22,12 +23,19 @@ module.exports = function(config) {
                     }
                 }],
                 noParse: [/sinon\.js/]
-            },
+            }
         },
         webpackServer: {
             noInfo: true
         },
-        reporters: ['progress'],
+        reporters: ['progress', 'coverage'],
+        coverageReporter: {
+            reporters: [{
+                type: 'text-summary'
+            }, {
+                type: 'lcov'
+            }]
+        },
         color: true,
         autoWatch: true
     })

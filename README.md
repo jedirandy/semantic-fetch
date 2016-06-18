@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/jedirandy/semantic-fetch.svg?branch=master)](https://travis-ci.org/jedirandy/semantic-fetch)
 [![dependencies](https://david-dm.org/jedirandy/semantic-fetch.svg)](https://david-dm.org/jedirandy/semantic-fetch)
 [![npm module](https://badge.fury.io/js/semantic-fetch.svg)](https://www.npmjs.org/package/semantic-fetch)
+[![codecov.io](https://codecov.io/github/jedirandy/semantic-fetch/coverage.svg?branch=master)](https://codecov.io/github/jedirandy/semantic-fetch?branch=master)
+
 
 The Fetch API is awesome, but it might need some tweaks when it comes to error handling and body resolving, this library provides an alternative fetcher with the following semantics:
 
@@ -13,9 +15,10 @@ The Fetch API is awesome, but it might need some tweaks when it comes to error h
 
 ## Install
 ```
-npm install --save semantic-fetch
+npm install semantic-fetch
 ```
 
+It supports ES6 modules, AMD, CommonJS or a global variable as SemanticFetch
 ## Getting started
 ```javascript
 // use fetch polyfill of your choice
@@ -49,10 +52,10 @@ this fetch creator takes 2 arguments:
 
    the Fetch function, you can inject a fetch implementation of your choice
 
- * `bodyResolver` (function: Response => Promise)
+ * `bodyResolver` (function: Response => Promise) [Optional]
 
-   a function that takes the response and returns a body resolver, e.g. ```res.json()```,
-   a default bodyResolver is provided in case absence
+   a function that takes the response and returns a promise that resolves the body content, e.g. ```res.json()```,
+   a default bodyResolver is used if the arg is not provided
 
 #### Returns
 the enhanced fetch function that takes the same arguments as `fetch`

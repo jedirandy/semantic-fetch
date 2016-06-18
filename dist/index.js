@@ -59,9 +59,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -70,9 +70,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 	var defaultBodyResolver = exports.defaultBodyResolver = function defaultBodyResolver(res) {
-	    var contentType = res.headers.get('content-type');
+	    var contentType = res.headers.get('content-type') || '';
 	    if (contentType.includes('text/plain')) return res.text();
-	    if (contentType.includes('multipart/form-data')) return res.formData();
 	    if (contentType.includes('application/json')) return res.json();
 	    return res.blob();
 	};
@@ -82,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return function (url, options) {
 	        return fetch(url, options).then(function (res) {
 	            return Promise.all([bodyResolver(res), Promise.resolve(res)]);
-	        }, function (err) {
+	        }, function () {
 	            return Promise.reject(Response.error());
 	        }).then(function (_ref) {
 	            var _ref2 = _slicedToArray(_ref, 2);
@@ -101,6 +100,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	exports.default = createFetch;
+
+	module.export = createFetch;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
 
 /***/ }
 /******/ ])
