@@ -26,4 +26,4 @@ export const text = (res, resolve, next) => {
         return next()
 }
 
-export const defaultResolvers = [text, json]
+export const defaultBodyResolvers = [text, json]

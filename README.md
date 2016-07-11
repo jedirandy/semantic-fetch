@@ -19,7 +19,7 @@ npm install semantic-fetch
 ```
 
 It supports ES6 modules, AMD, CommonJS or a global variable as SemanticFetch
-## Getting started
+## Example
 ```javascript
 // use fetch polyfill of your choice
 // import 'isomorphic-fetch'
@@ -42,7 +42,7 @@ fetcher('/api', { method: 'GET' })
 
 ## API
 
-### `createFetch(fetch, bodyResolver)`
+### `createFetch(fetch, bodyResolvers)`
 
 Creates a fetch function
 #### Arguments
@@ -52,10 +52,11 @@ this fetch creator takes 2 arguments:
 
    the Fetch function, you can inject a fetch implementation of your choice
 
- * `bodyResolver` (function: Response => Promise) [Optional]
+ * `bodyResolvers` array of (function: (Response, Resolve callback, Next callback) => Unit) [Optional]
 
-   a function that takes the response and returns a promise that resolves the body content, e.g. ```res.json()```,
-   a default bodyResolver is used if the arg is not provided
+   an array of functions that take the response and two callbacks as arguments, then either call resolve callback to resolve the body content, e.g. ```resolve(res.json())```, or pass to the next resolver by calling ```next()```
+
+   defaultBodyResolvers is used if the arg is not provided, which can be imported as ```{ defaultBodyResolver }```, providing text and json resolvers
 
 #### Returns
 the enhanced fetch function that takes the same arguments as `fetch`
