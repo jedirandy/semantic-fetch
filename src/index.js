@@ -1,16 +1,9 @@
-export const defaultBodyResolver = (res) => {
-    let contentType = res.headers.get('content-type') || ''
-    if (contentType.includes('text/plain'))
-        return res.text()
-    if (contentType.includes('application/json'))
-        return res.json()
-    return res.blob()
-}
+import {applyResolvers, defaultBodyResolvers} from './resolver'
 
-export const createFetch = (fetch, bodyResolver = defaultBodyResolver) => (url, options) =>
+export const createFetch = (fetch, bodyResolvers = defaultBodyResolvers) => (url, options) =>
     fetch(url, options)
     .then(
-        res => Promise.all([bodyResolver(res), Promise.resolve(res)]),
+        res => Promise.all([applyResolvers(bodyResolvers)(res), Promise.resolve(res)]),
         () => Promise.reject(Response.error())
     )
     .then(([body, res]) => {
@@ -25,5 +18,6 @@ export const createFetch = (fetch, bodyResolver = defaultBodyResolver) => (url, 
             return Promise.reject(response)
     })
 
+export { defaultBodyResolvers }
 export default createFetch
 module.export = createFetch

@@ -1,5 +1,5 @@
 import 'isomorphic-fetch'
-import { createFetch, defaultBodyResolver } from '../src'
+import { createFetch } from '../src'
 
 describe('tests', () => {
     let fetcher
@@ -56,43 +56,6 @@ describe('tests', () => {
                     expect(res.status).to.equal(0)
                     done()
                 })
-        })
-    })
-
-    describe('default body resolver', () => {
-        it('defaults to blob resolver', done => {
-            let blob = new Blob(['hello'])
-            let response = new Response(blob, {
-                headers: {
-                    'content-type': ''
-                }
-            })
-            defaultBodyResolver(response).then(body => {
-                expect(body.size).to.equal(5)
-                done()
-            })
-        })
-        it('resolves text', done => {
-            let response = new Response('Hello', {
-                headers: {
-                    'Content-Type': 'text/plain'
-                }
-            })
-            defaultBodyResolver(response).then(body => {
-                expect(body).to.equal('Hello')
-                done()
-            })
-        })
-        it('resolves json', done => {
-            let response = new Response(JSON.stringify({name: 'a'}), {
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            defaultBodyResolver(response).then(body => {
-                expect(body).to.deep.equal({name: 'a'})
-                done()
-            })
         })
     })
 })
